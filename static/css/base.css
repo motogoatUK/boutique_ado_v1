@@ -58,6 +58,7 @@ body {
 .bg-black {
     background:#000 !important;
 }
+
 .overlay {
     height: 100%;
     width: 100%;
@@ -67,6 +68,12 @@ body {
     background: whitesmoke;
     z-index: -1;
 }
+
+a.category-badge > span.badge:hover {
+    background: #212529;
+    color: #fff !important;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
