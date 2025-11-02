@@ -68,7 +68,7 @@ form.addEventListener('submit', async (event) => {
         <span class="icon" role="alert">
             <i class="fas fa-times"></i>
         </span>
-        <span>${error.message}</span>
+        <span>${result.error.message}</span>
         `;
         messageContainer.innerHTML = html;
         card.update({ 'disabled': false});
