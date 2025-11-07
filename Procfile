@@ -1,0 +1,1 @@
+web: gunicorn boutique-wt.wsgi:application
