@@ -25,11 +25,11 @@ def webhook(request):
         event = stripe.Webhook.construct_event(
             payload, sig_header, wh_secret
         )
-    except ValueError as e:
+    except ValueError:
         # Invalid payload
         return HttpResponse(status=400)
 
-    except stripe.error.SignatureVerificationError as e:
+    except stripe.error.SignatureVerificationError:
         # Invalid signature
         return HttpResponse(status=400)
 
@@ -56,26 +56,3 @@ def webhook(request):
     # Call the event handler with the event
     response = event_handler(event)
     return response
-
-    # event = None
-
-    # try:
-    #     event = stripe.Webhook.construct_event(
-    #         payload,
-    #         sig_header,
-    #         wh_secret
-    #     )
-    # except ValueError as e:
-    #     # Invalid payload
-    #     return HttpResponse(status=400)
-
-    # # Extract context
-    # context = getattr(event, "context", None)
-    # if context is None:
-    #     print("Missing context in event.")
-    #     return HttpResponse(status=400)
-
-    # api_key = account_api_keys.get(context)
-    # if api_key is None:
-    #     print(f"No API key found for context: {context}")
-    #     return HttpResponse(status=400)
